@@ -8,6 +8,25 @@
   </head>
   <body>
     <h1>Testando HTML</h1>
-    <a href="/exercicios-html/teste00">clique aqui</a>
+    
+    <a href link-brabo="exercicios-html/teste00.html">clique aqui</a> |
+    <a href link-brabo="exercicios-html/teste01.html">clique aqui</a>
+
+    <section id="conteudo"></section>
+
+    <footer>Só to testando</footer>
+
+    <script>
+      document.querySelectorAll('[link-brabo]').forEach(link => {
+        const conteudo = document.getElementById('conteudo')
+
+        link.onclick = function (e) {
+          e.preventDefault()
+          fetch(link.getAttribute('link-brabo'))
+            .then(resp => resp.text())
+            .then(html => (conteudo.innerHTML = html))
+        }
+      })
+    </script>
   </body>
 </html>
